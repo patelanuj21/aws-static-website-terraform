@@ -83,8 +83,6 @@ resource "aws_s3_bucket_website_configuration" "redirect_bucket-public-access" {
   }
 }
 
-
-
 # Create an S3 bucket to store logs
 resource "aws_s3_bucket" "log_bucket" {
   bucket        = var.log_bucket

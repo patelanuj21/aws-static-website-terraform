@@ -15,6 +15,9 @@ module "domain" {
   source       = "./modules/domain"
   region       = var.main_region
   project_name = var.main_project_name
+  project_phase  = local.main_project_phase
+  fqdn           = var.main_fqdn
+  redirect_sites = var.main_redirect_sites
   name         = var.main_domain
   is_terraform = true
 }

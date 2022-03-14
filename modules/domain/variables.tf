@@ -14,3 +14,15 @@ variable "project_name" {
 variable "name" {
   type = string
 }
+
+variable "fqdn" {
+  type = string
+}
+
+variable "project_phase" {
+  type = string
+}
+
+variable "redirect_sites" {
+  type = set(string)
+}
