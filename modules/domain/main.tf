@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 data "aws_route53_zone" "this" {
-  name         = var.name
+  name = var.name
 }
 

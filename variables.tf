@@ -12,5 +12,13 @@ variable "main_domain" {
 }
 
 variable "main_fqdn" {
+  type = string
+}
+
+variable "main_log_bucket" {
+  type = string
+}
+
+variable "main_redirect_sites" {
   type = list(string)
 }
