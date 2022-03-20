@@ -9,13 +9,13 @@ data "aws_route53_zone" "this" {
 
 # Creates SSL Certificate Requests for the requested SANs
 resource "aws_acm_certificate" "certificates" {
-  domain_name       = var.fqdn
-  subject_alternative_names = ["*.${var.name}", var.name]
-  validation_method = "DNS"
+  domain_name               = one(var.fqdn)
+  subject_alternative_names = local.sans
+  validation_method         = "DNS"
 
   tags = {
     Terraform = var.is_terraform
-    Name      = join("_", ["TF", var.project_name, var.project_phase,var.name])
+    Name      = join("_", ["TF", var.project_name, var.project_phase, var.name])
     Phase     = var.project_phase
   }
 
@@ -42,7 +42,7 @@ resource "aws_route53_record" "certvalidation" {
   zone_id         = data.aws_route53_zone.this.zone_id
 }
 
-# Validates the SSL Certificates using Route 53
+# Validate the SSL Certificates using Route 53
 resource "aws_acm_certificate_validation" "certvalidation" {
   certificate_arn         = aws_acm_certificate.certificates.arn
   validation_record_fqdns = [for r in aws_route53_record.certvalidation : r.fqdn]

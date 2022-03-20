@@ -12,7 +12,7 @@ variable "main_domain" {
 }
 
 variable "main_fqdn" {
-  type = string
+  type = list(any)
 }
 
 variable "main_log_bucket" {
@@ -20,5 +20,5 @@ variable "main_log_bucket" {
 }
 
 variable "main_redirect_sites" {
-  type = list(string)
+  type = list(any)
 }

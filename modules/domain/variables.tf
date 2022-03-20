@@ -16,7 +16,7 @@ variable "name" {
 }
 
 variable "fqdn" {
-  type = string
+  type = list(any)
 }
 
 variable "project_phase" {
@@ -24,5 +24,9 @@ variable "project_phase" {
 }
 
 variable "redirect_sites" {
-  type = set(string)
+  type = list(any)
+}
+
+locals {
+  sans = toset(concat(sort(var.redirect_sites), sort(var.fqdn), tolist(["*.${var.name}"])))
 }
