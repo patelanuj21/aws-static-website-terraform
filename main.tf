@@ -45,3 +45,13 @@ module "cloudfront" {
   log_bucket     = var.main_log_bucket
   is_terraform   = true
 }
+
+module "codecommit" {
+  source        = "./modules/codecommit"
+  region        = var.main_region
+  name          = var.main_domain
+  git_user      = var.main_git_user
+  project_name  = var.main_project_name
+  project_phase = local.main_project_phase
+  is_terraform  = true
+}

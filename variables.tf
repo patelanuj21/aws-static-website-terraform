@@ -22,3 +22,7 @@ variable "main_log_bucket" {
 variable "main_redirect_sites" {
   type = list(any)
 }
+
+variable "main_git_user" {
+  type = string
+}
