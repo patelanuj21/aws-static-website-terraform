@@ -77,6 +77,13 @@ resource "aws_cloudfront_distribution" "website_distribution" {
     response_page_path    = "/error.html"
   }
 
+  custom_error_response {
+    error_caching_min_ttl = 10
+    error_code            = 400
+    response_code         = 404
+    response_page_path    = "/error.html"
+  }
+
   origin {
     origin_id   = "${module.website.website_bucket}.s3.${module.website.region}.amazonaws.com"
     domain_name = "${module.website.website_bucket}.s3.${module.website.region}.amazonaws.com"

@@ -99,7 +99,7 @@ resource "aws_s3_bucket" "log_bucket" {
 }
 
 # Create a logs directory to store access logs in S3
-resource "aws_s3_bucket_object" "logs_directory" {
+resource "aws_s3_object" "logs_directory" {
   bucket = aws_s3_bucket.log_bucket.id
   acl    = "private"
   key    = "logs/"

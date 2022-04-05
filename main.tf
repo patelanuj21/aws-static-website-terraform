@@ -46,12 +46,14 @@ module "cloudfront" {
   is_terraform   = true
 }
 
-module "codecommit" {
-  source        = "./modules/codecommit"
+module "ci-cd" {
+  source        = "./modules/ci-cd"
   region        = var.main_region
   name          = var.main_domain
+  fqdn          = var.main_fqdn
   git_user      = var.main_git_user
   project_name  = var.main_project_name
   project_phase = local.main_project_phase
   is_terraform  = true
+  depends_on    = [module.cloudfront]
 }

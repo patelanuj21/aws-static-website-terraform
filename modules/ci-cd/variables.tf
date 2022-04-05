@@ -23,3 +23,7 @@ variable "project_phase" {
 variable "git_user" {
   type = string
 }
+
+variable "fqdn" {
+  type = list(any)
+}
